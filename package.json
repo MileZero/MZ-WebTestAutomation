@@ -1,29 +1,23 @@
 {
-    "name": "playwright_poc",
-    "version": "1.0.0",
-    "description": "This repo contain all the examples in this course.",
-    "main": "index.js",
-    "scripts": {
-        "test": "jest"
-    },
-    "jest": {
-        "testPathIgnorePatterns": [
-            "/tests/"
-        ]
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/MileZero/MZ-PW-POC"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-        
-    },
-    "homepage": "https://github.com/MileZero/MZ-PW-POC",
-    "devDependencies": {
-        "jest": "^27.5.1",
-        "playwright": "^1.11.1"
-    }
+  "name": "yes",
+  "version": "1.0.0",
+  "description": "testing ",
+  "main": "Staticroute.spec.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+h ttps://github.com/MileZero/MZ-PW-POC.git"
+  },
+  "author": "yasser",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MileZero/MZ-PW-POC/issues"
+  },
+  "homepage": "https://github.com/MileZero/MZ-PW-POC#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.35.0",
+    "dotenv": "^16.1.4"
+  }
 }
