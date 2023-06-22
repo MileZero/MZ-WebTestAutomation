@@ -4,7 +4,10 @@
     "description": "This repo contain all the examples in this course.",
     "main": "index.js",
     "scripts": {
-        "test": "jest"
+        "test:codegen": "npx playwright codegen",
+        "test": "npx playwright test",
+        "test:ui": "npx playwright test --ui",
+        "test:chrome": "npx playwright test --project=chromium"
     },
     "jest": {
         "testPathIgnorePatterns": [
