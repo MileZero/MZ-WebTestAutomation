@@ -21,11 +21,10 @@
     "keywords": [],
     "author": "",
     "license": "ISC",
-    "bugs": {
-        
-    },
+    "bugs": {},
     "homepage": "https://github.com/MileZero/MZ-PW-POC",
     "devDependencies": {
+        "@playwright/test": "^1.35.1",
         "jest": "^27.5.1",
         "playwright": "^1.11.1"
     }

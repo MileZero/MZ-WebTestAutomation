@@ -1,8 +1,8 @@
 const { chromium } = require('playwright');
-const HomePage = require('../../models/Home.page');
-const LoginPage = require('../../models/Login.page');
+// const HomePage = require('../../models/Home.page');
+// const LoginPage = require('../../models/Login.page');
 
-describe('Applitools demo page', () => {
+describe('MileZeroProject', () => {
     jest.setTimeout(30000);
     let browser = null;
     let context = null;

@@ -4,7 +4,7 @@ class BasePage{
 
     }
     async navigate(path){
-    await this.page.goto('https://demo.applitools.com/${path}');
+    await this.page.goto('https://milevision-stage.milezero.com');
     }
 }
 module.exports = BasePage;
