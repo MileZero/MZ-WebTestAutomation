@@ -28,7 +28,9 @@ test('test', async ({ page }) => {
   await page.frameLocator('#iframe').getByRole('option', { name: 'AL' }).click();
   await page.frameLocator('#iframe').getByRole('button', { name: 'SUBMIT' }).click();
   await page.frameLocator('#iframe').getByText('Shipper Customers GENERALAREASROUTING OVERRIDESADDRESSLABELSWAYPOINTSRATESNAVIGA').click();
-  //await page.frame({
-   // name: 'iframe'}).locator('div').filter({ hasText: 'Customer CreationCustomer Created With Success' }).nth(3).click();
+
+  await expect (page.locator('div.p-toast-message.p-toast-message-success > div > div.p-toast-message-text > div')).toHaveText('Customer Created With Success');
+  
+  
   await page.frameLocator('#iframe').getByRole('columnheader', { name: 'Customer Id' }).locator('svg').first().click();
 });
