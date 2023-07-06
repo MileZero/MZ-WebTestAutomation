@@ -1,27 +1,14 @@
 // @ts-check
 const { defineConfig, devices } = require('@playwright/test');
 const dotenv = require('dotenv');
-<<<<<<< Updated upstream
 dotenv.config();
 module.exports = {
   username: process.env.userName,
   password: process.env.Password,
 };
 
-
-/**
- * Read environment variables from file.
- * https://github.com/motdotla/dotenv
- */
-// require('dotenv').config();
-=======
 const path = require('path');
 dotenv.config({ path: path.resolve(__dirname, '.env') });
->>>>>>> Stashed changes
-
-/**
- * @see https://playwright.dev/docs/test-configuration
- */
 
 module.exports = defineConfig({
   testDir: './tests',
