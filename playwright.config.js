@@ -1,6 +1,7 @@
 // @ts-check
 const { defineConfig, devices } = require('@playwright/test');
 const dotenv = require('dotenv');
+<<<<<<< Updated upstream
 dotenv.config();
 module.exports = {
   username: process.env.userName,
@@ -13,10 +14,15 @@ module.exports = {
  * https://github.com/motdotla/dotenv
  */
 // require('dotenv').config();
+=======
+const path = require('path');
+dotenv.config({ path: path.resolve(__dirname, '.env') });
+>>>>>>> Stashed changes
 
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
+
 module.exports = defineConfig({
   testDir: './tests',
   outputDir: 'testOutputs',
@@ -42,9 +48,16 @@ module.exports = defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
+    // Setup project
+    { name: 'setup', testMatch: /.*\.setup\.ts/ },
+
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: { ...devices['Desktop Chrome'],
+    // Use prepared auth state.
+    storageState: 'playwright/.auth/user.json',
+  },
+  dependencies: ['setup'],
     },
 
     //{
