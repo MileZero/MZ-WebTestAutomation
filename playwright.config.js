@@ -42,7 +42,7 @@ module.exports = defineConfig({
       name: 'chromium',
       use: { ...devices['Desktop Chrome'],
     // Use prepared auth state.
-    storageState: 'playwright/.auth/user.json',
+
   },
   dependencies: ['setup'],
     },
