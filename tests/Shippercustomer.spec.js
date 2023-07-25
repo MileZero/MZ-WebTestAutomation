@@ -1,18 +1,18 @@
 // @ts-check
 const {test, expect} = require('@playwright/test')
+const login = require('./login.spec');
+require('dotenv').config();
+const email = process.env.Email;
+const password = process.env.Pass;
+// Login to milevision
 test('test', async ({ page }) => {
-  await page.goto('https://milevision-stage.milezero.com/');
-  await page.getByPlaceholder('username/email').fill('clmsustage');
-  await page.getByPlaceholder('your password').fill('1234');
-  await page.getByRole('button', { name: 'Log In' }).click();
-  await page.getByTitle('Configure').click();
+  await login(page, email, password);
   await page.getByRole('button', { name: 'Warehouse' }).click()
   await page.frameLocator('#iframe').getByRole('link', { name: 'SHIPPER CUSTOMERS' }).click();
   await page.frameLocator('#iframe').getByRole('button', { name: 'customButton.label' }).click();
   await page.frameLocator('#iframe').getByRole('combobox', { name: 'Select a Shipper' }).click();
   await page.frameLocator('#iframe').getByRole('option', { name: 'Alreach' }).click();
-  await page.frameLocator('#iframe').getByPlaceholder('Reference Id').press('CapsLock');
-  await page.frameLocator('#iframe').getByPlaceholder('Reference Id').fill('ka-tl');
+  await page.frameLocator('#iframe').getByPlaceholder('Reference Id').fill('KA-TL');
   await page.frameLocator('#iframe').getByPlaceholder('Name', { exact: true }).fill('Kevin');
   await page.frameLocator('#iframe').getByPlaceholder('1234 Street Name').fill('Dublin, 16 Light weat st,.');
   await page.frameLocator('#iframe').getByPlaceholder('City').fill('NEW YORK');

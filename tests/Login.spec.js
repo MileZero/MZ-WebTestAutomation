@@ -1,5 +1,7 @@
 // @ts-check
 const { test, expect} = require ('@playwright/test');
+const { TIMEOUT } = require('dns');
+const { setTimeout } = require('timers/promises');
 async function login(page, email, password) {
   
   await page.goto('https://milevision-stage.milezero.com/');
@@ -11,10 +13,10 @@ async function login(page, email, password) {
   await page.getByRole('button', { name: 'Log In' }).click();
 
   // Wait for navigation to complete and check if login was successful
+  await page.waitForNavigation()
 
-  await page.waitForNavigation();
   const title = await page.title();
-  if (title === 'Milevision') {
+  if (title === 'MileVision') {
     console.log('Login successful');
   } else {
     console.log('Login failed');

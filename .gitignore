@@ -3,4 +3,5 @@
 /playwright/.cache/
 /node_modules/
 /.env/
-playwright/.auth
+/playwright/.auth
+/testOutputs/
