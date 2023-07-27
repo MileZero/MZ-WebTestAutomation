@@ -3,7 +3,7 @@ const { test, expect} = require ('@playwright/test');
 const { TIMEOUT } = require('dns');
 const { setTimeout } = require('timers/promises');
 async function login(page, email, password) {
-  
+  // Navigate to the website
   await page.goto('https://milevision-stage.milezero.com/');
 
   // Fill in email and password and click login button
