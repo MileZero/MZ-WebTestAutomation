@@ -1,6 +1,6 @@
 // @ts-check
 const { test, expect } = require('@playwright/test');
-const login = require('./login.spec');
+const login = require('./Loginto.spec');
 require('dotenv').config();
 const email = process.env.Email;
 const password = process.env.Pass;

@@ -1,5 +1,5 @@
 // @ts-check
-const { test, expect} = require ('@playwright/test');
+import { test, expect } from '@playwright/test';
 const { TIMEOUT } = require('dns');
 const { setTimeout } = require('timers/promises');
 async function login(page, email, password) {
