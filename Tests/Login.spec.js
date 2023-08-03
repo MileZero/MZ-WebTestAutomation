@@ -1,12 +1,26 @@
 // @ts-check
-const { test, expect} = require('@playwright/test');
-const userName = process.env.USER || '';
-const password = process.env.PASSCODE || '';
-
-test('test', async ({ page }) => {
+const { test, expect} = require ('@playwright/test');
+const { TIMEOUT } = require('dns');
+const { setTimeout } = require('timers/promises');
+async function login(page, email, password) {
+  // Navigate to the website
   await page.goto('https://milevision-stage.milezero.com/');
-  await page.getByPlaceholder('username/email').fill(userName);
+
+  // Fill in email and password and click login button
+
+  await page.getByPlaceholder('username/email').fill(email)
   await page.getByPlaceholder('your password').fill(password);
   await page.getByRole('button', { name: 'Log In' }).click();
-  await page.getByTitle('Configure').click();
-});
+
+  // Wait for navigation to complete and check if login was successful
+  await page.waitForNavigation()
+
+  const title = await page.title();
+  if (title === 'MileVision') {
+    console.log('Login successful');
+  } else {
+    console.log('Login failed');
+  }
+}
+
+module.exports = login;
