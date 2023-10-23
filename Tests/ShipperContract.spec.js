@@ -20,11 +20,11 @@ test('test', async ({ page }) => {
   await page.frameLocator('#iframe').getByRole('option', { name: 'RDG Route' }).click();
   await page.frameLocator('#iframe').getByRole('button', { name: 'Save & Close' }).click();
   await page.frameLocator('#iframe').getByLabel('Name').fill('yasser2');
-  await page.frameLocator('#iframe').locator('#referenceId').fill('12aef789-kj1897');
+  await page.frameLocator('#iframe').locator('#referenceId').fill('12ae-fh8J');
   await page.frameLocator('#iframe').getByRole('button', { name: 'Save & Close' }).click();
   await page.frameLocator('#iframe').getByText('yasser2').click();
   await page.frameLocator('#iframe').getByRole('button', { name: 'customButton.label' }).nth(2).click();
-  await page.frameLocator('#iframe').locator('div').filter({ hasText: /^Reference Id$/ }).getByRole('textbox').fill("Yasser_test444");
+  await page.frameLocator('#iframe').locator('div').filter({ hasText: /^Reference Id$/ }).getByRole('textbox').fill("Yas_tst4");
   await page.locator('id=customerId').click
  // await page.frameLocator('#iframe').locator('#pv_id_51 svg').click();
   await page.frameLocator('#iframe').locator('#pv_id_51_0').click();
