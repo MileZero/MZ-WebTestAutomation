@@ -1,6 +1,6 @@
 const { test, page, expect } = require('@playwright/test');
 
-test('Visual Comparison for Navbar', async ({ page }) => {
+test('Visual Comparison to check Navbar existence for mv', async ({ page }) => {
 
     await page.goto('https://milevision-stage.milezero.com/mv/FleetLoadReport.jsp?node=RDG');
     await page.getByRole('button', { name: 'AUTH0' }).click()
