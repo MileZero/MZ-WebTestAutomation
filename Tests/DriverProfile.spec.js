@@ -24,7 +24,6 @@ test('driverprofile page', async ({ page }) => {
     await Filter.filterWithWords('RDG')
     // await page.fill('input[placeholder="Search"]', 'RDG');
     const Searchedword = await page.inputValue('input[placeholder="Search"]');
-    // const Searchedword = await Search.inputValue();
     await page.getByRole('columnheader', { name: 'Name' }).getByRole('button').click();
     await page.getByPlaceholder('Search').fill(Searchedword)
     console.log(Searchedword)
