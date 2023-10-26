@@ -20,7 +20,7 @@ test('driverprofile page', async ({ page }) => {
     const Searchword = await page.evaluate(() => {
         return prompt('Please enter word to search with:');
     });
-    await Filter.filterClick()
+    await Filter.filterStatusClick();
     await Filter.filterWithWords('RDG')
     // await page.fill('input[placeholder="Search"]', 'RDG');
     const Searchedword = await page.inputValue('input[placeholder="Search"]');
