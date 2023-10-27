@@ -1,6 +1,4 @@
 const { expect, Locator, Page } = require('@playwright/test');
-
-//var Searchwordinfo = prompt("What is your name?");
 exports.FilterFeature = class FilterFeature {
 constructor (page) {
     this.page = page
