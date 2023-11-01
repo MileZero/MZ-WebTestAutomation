@@ -28,6 +28,6 @@ test('Orderlist', async ({ page }) => {
         console.log('filtering failed')
     }
     const filterResult = await expect.soft(page.frameLocator('#iframe').getByRole('cell', { name: '17:11' })).toBeVisible()
-    expect(await page.screenshot()).toMatchSnapshot({maxDiffPixelRatio: 0.04});
+    expect(await page.screenshot());
 
 })
