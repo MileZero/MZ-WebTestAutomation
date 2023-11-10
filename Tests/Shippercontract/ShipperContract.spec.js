@@ -1,6 +1,6 @@
 // @ts-check
 import { test, expect } from '@playwright/test';
-const login = require('./Loginto.spec')
+const login = require('../Logintomilevision/Loginto.spec')
 require('dotenv').config();
 const email = process.env.Email;
 const password = process.env.Pass; 

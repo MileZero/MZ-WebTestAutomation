@@ -1,6 +1,6 @@
 const { test, page, expect } = require('@playwright/test');
-const { FilterFeature } = require('../pages/Filter.Feature');
-const Login = require('./Loginto.spec');
+const { FilterFeature } = require('../../pages/Filter.Feature');
+const Login = require('../Logintomilevision/Loginto.spec');
 require('dotenv').config();
 const email = process.env.Email;
 const password = process.env.Pass;
