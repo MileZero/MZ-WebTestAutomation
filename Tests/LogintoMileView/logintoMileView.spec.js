@@ -14,10 +14,8 @@ async function login(page, email, password) {
   await page.getByRole('button', { name: 'Log In' }).click();
 
   // Wait for navigation to complete and check if login was successful
-
-  await page.waitForNavigation()
   await page.getByRole('button', { name: 'AUTH0' }).click()
-  await page.goto('https://milevision-stage.milezero.com/mv/priorityexpressSearch.jsp?node=BNR');
+
   const title = await page.title();
   if (title === 'MileZero Analytics') {
     console.log('Login successful');

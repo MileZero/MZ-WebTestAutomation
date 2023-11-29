@@ -2,12 +2,13 @@ const { expect, Locator, Page } = require('@playwright/test');
 exports.createDriver = class createDriver {
     constructor(page) {
         this.page = page
-        this.vendorID = page.getByPlaceholder("Vendor ID");
+        this.vendorID = page.getByPlaceholder('Vendor ID');
         this.Vendor = page.getByPlaceholder('Vendor', { exact: true })
         this.Name = page.getByPlaceholder("Enter name")
-        this.Email = page.locator('[id="email"]');
-        this.createdDriver = page.getByRole('cell', { name: {}, exact: true }).locator('a').click();
+        this.Email = page.getByPlaceholder('email@email.com')
+        this.createdDriver = page.getByRole('cell', { name: {}, exact: true }).locator('a');
         this.showInActive = page.getByLabel('Show Inactive');
+        this.Save= page.getByRole('button', {name:'Create'})
         this.saveResultsAsTab = page.getByRole('tab', { name: ' Save results as tab' });
         this.mobileNumber = page.getByLabel('Mobile Number');
         this.userName = page.getByPlaceholder('User Name');
@@ -18,8 +19,8 @@ exports.createDriver = class createDriver {
         this.companyName = page.getByPlaceholder('Company Name');
         this.contractorType =  page.locator("xpath=//span[@id='contractorType']");
         this.contractorName = page.locator("xpath=//span[@id='contractorName']");
-        this.driverlicenceExpiryDate = page.locator('div').filter({ hasText: /^Driver\'s LicenseStateINACTIVEExpiration$/ }).getByPlaceholder('mm/dd/yyyy').click();
-        this.insuranceCompanyExpiryDate = page.locator('div').filter({ hasText: /^InsuranceCompanyExpiration$/ }).getByPlaceholder('mm/dd/yyyy').click();
+        this.driverlicenceExpiryDate = page.locator("#pv_id_23_0_content > div > div:nth-child(1) > div:nth-child(5) > span")
+        this.insuranceCompanyExpiryDate = page.locator('div').filter({ hasText: /^InsuranceCompanyExpiration$/ }).getByPlaceholder('mm/dd/yyyy');
 
     }
     async createNewDriverPage() {
@@ -28,37 +29,41 @@ exports.createDriver = class createDriver {
 
     async writeEmail() {
 
-        await this.Email.fill("yasser")
+        await this.Email.fill('yasser@yasser.com')
     }
 
     async writeVendorID() {
 
-        await this.VendorID.fill("Ejy94Ko183bh5lo73")
+        await this.vendorID.fill('Ejy94Ko183bh5lo73')
     }
 
     async writeName() {
 
-        await this.Name.fill(sam)
+        await this.Name.fill('sam')
     }
     async writePhoneNumber() {
 
-        await this.mobileNumber(8143193555)
+        await this.mobileNumber.fill('8143193555')
     }
     async writeUserName() {
 
         await this.userName.fill('samy')
     }
-    async writeContractorType() {
+    async chooseContractorType() {
 
-        await this.contractorType.click().getByText('Master').click()
+        await this.contractorType.click()
+        await this.page.getByText('Master').click();
     }
     async chooseFleet() {
 
-        await this.fleet.selectOption('PHL_SECONDARY_USER')
+        await this.fleet.click();
+        await this.page.getByText('PHL_SECONDARY_USER').click();
     }
+    
     async chooseBusinessUnit() {
 
-        await this.fleet.selectOption('RDG Route')
+        await this.businessUnit.click();
+        await this.page.getByText('RDG Route').click();
     }
     async writeVendor() {
 
@@ -66,7 +71,12 @@ exports.createDriver = class createDriver {
     }
     async chooseWorkerType() {
 
-        await this.fleet.selectOption('Driver')
+        await this.workerType.click();
+        await this.page.getByText('Driver').click();
+    }
+    async writeContractorNumber() {
+
+        await this.contractorNumber.fill('55667788')
     }
     async checkInActive() {
 
@@ -74,11 +84,17 @@ exports.createDriver = class createDriver {
     }
     async chooseDriverLicenseExpiryDate() {
     
-        await this.driverlicenceExpiryDate.getByText('8', { exact: true }).click();
+        await this.driverlicenceExpiryDate.click()
+        await this.page.getByText('8', { exact: true }).click();
     }
     async chooseInsuranceCompanyExpiryDate() {
 
-        await this.insuranceCompanyExpiryDate.getByText('30',{exact: true}).click();
+        await this.insuranceCompanyExpiryDate.click()
+        await this.page.getByText('14',{exact: true}).click();
+    }
+    async clickSave() {
+
+        await this.Save.click();
     }
 
 };
@@ -113,4 +129,4 @@ exports.createDriver = class createDriver {
 //   });
 //   await page.getByText('Driver\'s LicenseStateINACTIVEExpiration').click();
 //   await page.getByText('8', { exact: true }).click();
-// });
+// }); //*[@id="pv_id_23_0_content"]/div/div[1]/div[5]/span
