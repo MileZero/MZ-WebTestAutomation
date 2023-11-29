@@ -2,7 +2,8 @@ const { expect, Locator, Page } = require('@playwright/test');
 exports.createDriver = class createDriver {
     constructor(page) {
         this.page = page
-        this.VendorID = page.getByPlaceholder("Vendor ID");
+        this.vendorID = page.getByPlaceholder("Vendor ID");
+        this.Vendor = page.getByPlaceholder('Vendor', { exact: true })
         this.Name = page.getByPlaceholder("Enter name")
         this.Email = page.locator('[id="email"]');
         this.createdDriver = page.getByRole('cell', { name: {}, exact: true }).locator('a').click();
@@ -16,6 +17,9 @@ exports.createDriver = class createDriver {
         this.contractorNumber = page.locator('div').filter({ hasText: /^Contractor Number$/ }).getByRole('textbox');
         this.companyName = page.getByPlaceholder('Company Name');
         this.contractorType =  page.locator("xpath=//span[@id='contractorType']");
+        this.contractorName = page.locator("xpath=//span[@id='contractorName']");
+        this.driverlicenceExpiryDate = page.locator('div').filter({ hasText: /^Driver\'s LicenseStateINACTIVEExpiration$/ }).getByPlaceholder('mm/dd/yyyy').click();
+        this.insuranceCompanyExpiryDate = page.locator('div').filter({ hasText: /^InsuranceCompanyExpiration$/ }).getByPlaceholder('mm/dd/yyyy').click();
 
     }
     async createNewDriverPage() {
@@ -23,27 +27,58 @@ exports.createDriver = class createDriver {
 }
 
     async writeEmail() {
+
         await this.Email.fill("yasser")
     }
 
     async writeVendorID() {
+
         await this.VendorID.fill("Ejy94Ko183bh5lo73")
     }
 
     async writeName() {
+
         await this.Name.fill(sam)
     }
     async writePhoneNumber() {
+
         await this.mobileNumber(8143193555)
     }
     async writeUserName() {
-        await this.userName(samy)
+
+        await this.userName.fill('samy')
     }
     async writeContractorType() {
+
         await this.contractorType.click().getByText('Master').click()
     }
+    async chooseFleet() {
+
+        await this.fleet.selectOption('PHL_SECONDARY_USER')
+    }
+    async chooseBusinessUnit() {
+
+        await this.fleet.selectOption('RDG Route')
+    }
+    async writeVendor() {
+
+        await this.Vendor.fill('Bristine co')
+    }
+    async chooseWorkerType() {
+
+        await this.fleet.selectOption('Driver')
+    }
     async checkInActive() {
+
         await this.showInActive.click()
+    }
+    async chooseDriverLicenseExpiryDate() {
+    
+        await this.driverlicenceExpiryDate.getByText('8', { exact: true }).click();
+    }
+    async chooseInsuranceCompanyExpiryDate() {
+
+        await this.insuranceCompanyExpiryDate.getByText('30',{exact: true}).click();
     }
 
 };
