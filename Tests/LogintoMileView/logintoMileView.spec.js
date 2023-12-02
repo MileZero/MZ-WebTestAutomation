@@ -16,7 +16,7 @@ async function login(page, email, password) {
   // Wait for navigation to complete and check if login was successful
   await page.getByRole('button', { name: 'AUTH0' }).click()
 
-  const title = await page.title();
+  const title = await page.title({timeout: 3000});
   if (title === 'MileZero Analytics') {
     console.log('Login successful');
   } else {

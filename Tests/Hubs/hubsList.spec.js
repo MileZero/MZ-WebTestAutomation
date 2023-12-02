@@ -8,8 +8,9 @@ const password = process.env.Pass;
 test('driverprofile page', async ({ page }) => {
      await Login(page, email, password)
     const Filter = new FilterFeature(page);
-    await page.goto('https://milevision-stage.milezero.com/mv/hubsConfig.jsp');
-    await Filter.filterName.
+    await page.goto('https://milevision-stage.milezero.com/mv/hubsConfig.jsp', {timeout: 3000});
+    await Filter.sortColumns();
+    await Filter.filterNameClick()
     await Filter.filterStatusClick();
     await Filter.filterWithWords('RDG')
 

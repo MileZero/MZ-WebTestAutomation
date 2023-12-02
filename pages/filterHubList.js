@@ -12,7 +12,9 @@ exports.FilterFeature = class FilterFeature {
         this.filterTimeZone = page.getByRole('columnheader', { name: 'Time Zone' }).getByRole('button');
         this.filterGeocode = page.getByRole('columnheader', { name: 'Geocode' }).getByRole('button');
         this.filterName = page.getByRole('columnheader', { name: 'Name' }).getByRole('button')
-        this.sort = page.locator('xpath=//*[@name()="rect"]')
+        this.filterGeoRad = page.getByRole('columnheader', { name: 'Geo.Rad(ft)' })
+         //page.locator('xpath=//*[@name()="rect"]') >> sorting xpath
+        this.columnSort = page.locator('svg').first();
         this.Search = page.locator('input[type="text"]');
         this.showInActive = page.getByLabel('Show Inactive');
         this.saveResultsAsTab = page.getByRole('tab', { name: ' Save results as tab' });
@@ -26,8 +28,14 @@ exports.FilterFeature = class FilterFeature {
     }
 
     async sortColumns(){
-        await this.sort.click()
+      
+        const columns = ["Name", "Description", "Address", "Address2", "City", "State", "Zip", "Time Zone", "Status", "Geocode", "Geo.Rad(ft)" ];
+        for (let i = 0; i <= columns.length; i++) {
+       await this.page.getByRole('columnheader', { name: `${columns[i]}` }).locator('svg').first().click()
+
     }
+}
+
 
     async tabNameClick() {
         await this.tabName.click()
