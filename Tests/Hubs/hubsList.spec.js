@@ -18,11 +18,10 @@ test('driverprofile page', async ({ page }) => {
     await page.getByRole('columnheader', { name: 'Name' }).getByRole('button').click();
     await page.getByPlaceholder('Search').fill(Searchedword)
     await Filter.filterNameClick();
-    await Filter.filterWithWords('Duban')
+    await Filter.filterWithWords('')
     await Filter.saveResultsAsTabClick(Searchedword)
     console.log(Searchedword)
 });
- // await page.getByRole('button', { name: 'Add a New Driver' }).click();
-// await page.getByRole('button', { name: 'Save' }).click();
+
 
 
