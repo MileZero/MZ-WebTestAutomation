@@ -8,19 +8,21 @@ const password = process.env.Pass;
 test('driverprofile page', async ({ page }) => {
      await Login(page, email, password)
     const Filter = new FilterFeature(page);
-    await page.goto('https://milevision-stage.milezero.com/mv/hubsConfig.jsp', {timeout: 3000});
+    const word = 'A'
+    await page.goto('https://milevision-stage.milezero.com/mv/hubsConfig.jsp');
     await Filter.sortColumns();
-    await Filter.filterNameClick()
-    await Filter.filterStatusClick();
-    await Filter.filterWithWords('RDG')
+    await Filter.searchColumns(word);
+    // await Filter.filterNameClick()
+    // await Filter.filterStatusClick();
+    // await Filter.filterWithWords('RDG')
 
-    const Searchedword = await page.inputValue('input[placeholder="Search"]');
-    await page.getByRole('columnheader', { name: 'Name' }).getByRole('button').click();
-    await page.getByPlaceholder('Search').fill(Searchedword)
-    await Filter.filterNameClick();
-    await Filter.filterWithWords('')
-    await Filter.saveResultsAsTabClick(Searchedword)
-    console.log(Searchedword)
+    // const Searchedword = await page.inputValue('input[placeholder="Search"]');
+    // await page.getByRole('columnheader', { name: 'Name' }).getByRole('button').click();
+    // await page.getByPlaceholder('Search').fill(Searchedword)
+    // await Filter.filterNameClick();
+    // await Filter.filterWithWords('')
+    // await Filter.saveResultsAsTabClick(Searchedword)
+    // console.log(Searchedword)
 });
 
 

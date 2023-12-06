@@ -11,6 +11,14 @@ constructor (page) {
     this.tabName = page.getByLabel('Tab Name');
 
 }
+async sortColumns(){
+      
+    const columns = ["Name", "Description", "Address", "Address2", "City", "State", "Zip", "Time Zone", "Status", "Geocode", "Geo.Rad(ft)" ];
+    for (let i = 0; i <= columns.length; i++) {
+   await this.page.getByRole('columnheader', { name: `${columns[i]}` }).locator('svg').first().click()
+
+}
+}
 
 async saveResultsAsTabClick() {
     await this.saveResultsAsTab.click()
