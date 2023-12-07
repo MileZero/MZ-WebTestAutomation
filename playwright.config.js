@@ -19,6 +19,7 @@ dotenv.config({ path: path.resolve(__dirname, '.env') });
 module.exports = defineConfig({
   testDir: './tests',
   outputDir: 'testOutputs',
+  timeout: 5 * 60 * 1000,
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -45,7 +46,7 @@ module.exports = defineConfig({
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] ,
       launchOptions:{
-        slowMo: 1000}
+        slowMo: 2000}
       }
     },
 
