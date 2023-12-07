@@ -17,7 +17,7 @@ exports.createHub = class createHub {
         this.ZIP = page.getByLabel('Zip/Postal Code');
         this.Plus4 = page.getByPlaceholder('Plus');
         this.GIclass = page.getByPlaceholder('Gl Class');
-        this.State = page.locator('xpath =//*[@id="state"]').getByRole('combobox');
+        this.State = page.getByRole('combobox');
         this.deliveryDays = page.locator('div').filter({ hasText: /^MON$/ }).locator('div').nth(2)
         this.Latitude = page.getByLabel('Latitude');
         this.Longitude = page.getByLabel('Longitude');
@@ -34,7 +34,7 @@ exports.createHub = class createHub {
     }
     async writeContactEmail() {
 
-        await this.contactEmail.fill('yasser@test.com')
+        await this.contactEmail.fill('Selim@test.com')
     }
 
     async writeReferenceID() {
@@ -48,7 +48,7 @@ exports.createHub = class createHub {
 
     async writeName() {
 
-        await this.Name.fill('Mady')
+        await this.Name.fill('Selim')
     }
     async writecontactPhone() {
 
@@ -56,7 +56,7 @@ exports.createHub = class createHub {
     }
     async writecontactName() {
 
-        await this.contactName.fill('fady')
+        await this.contactName.fill('Shady')
     }
     async chooseState() {
 
@@ -65,7 +65,7 @@ exports.createHub = class createHub {
     }
     async writeLocationName() {
 
-        await this.locationName.fill('Chick Fil-A')
+        await this.locationName.fill('Costco')
     }
     async writeAddress() {
 
@@ -93,20 +93,20 @@ exports.createHub = class createHub {
 
         await this.GIclass.fill('loak')
     }
-    async clickSave() {
+    async clickCreate() {
 
         await this.createButton.click();
     }
     async writeCity() {
 
-        await this.City.fill('Birmingham')
+        await this.City.fill('Birtish coloumbia')
     }
     async writeSMS() {
 
-        await this.SMS.fill(' HELLO ')
+        await this.SMS.fill(' test a hub ')
     }
     async chooseDeliveryDays() {
-        await this.deliveryDays.check();
+        await this.deliveryDays.click();
 
     }
 }

@@ -4,12 +4,11 @@ const Login = require('../LogintoMileView/logintoMileView.spec');
 require('dotenv').config();
 const email = process.env.Email;
 const password = process.env.Pass;
-test('create a new driver page', async ({page}) => {
+test('create a new hub page', async ({page}) => {
     await Login(page, email, password);
     const create = new createHub(page);
     await create.createNewHubPage();
     await create.clickCreateAHubButton();
-    await create.showInActive();
     await create.writeName();
     await create.writeReferenceID();
     await create.writeDescription();
@@ -26,13 +25,14 @@ test('create a new driver page', async ({page}) => {
     await create.writePlus4();
     await create.writeGLClass();
     await create.chooseDeliveryDays();
+    await create.clickCreate();
 
 // Wait for the data table to load
 await page.waitForSelector('#pv_id_20_0_content > div > div.p-datatable-wrapper > table');
 
 // Search for the created driver in the data table
 const searchText = 'MADY';
-const searchResults = await page.$$eval('#pv_id_86_0_content > div > div.p-datatable-wrapper > table td', (cells, searchText) => {
+const searchResults = await page.$$eval('#pv_id_36_0_content > div > div.p-datatable-wrapper > table td', (cells, searchText) => {
   const results = [];
   for (const cell of cells) {
     if (cell.textContent.includes(searchText)) {
@@ -48,7 +48,7 @@ const searchResults = await page.$$eval('#pv_id_86_0_content > div > div.p-datat
 console.log(`Search results for "${searchText}":`);
 if (searchResults.length > 0) {
   for (const result of searchResults) {
-    console.log(result);
+    console.log(`a hub ${result} created`);
   }
 } else {
   console.log('No matching results found.');

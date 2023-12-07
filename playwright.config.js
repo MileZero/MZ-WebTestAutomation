@@ -46,7 +46,7 @@ module.exports = defineConfig({
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] ,
       launchOptions:{
-        slowMo: 2000}
+        slowMo: 1000}
       }
     },
 
