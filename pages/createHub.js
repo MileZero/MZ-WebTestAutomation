@@ -34,12 +34,12 @@ exports.createHub = class createHub {
     }
     async writeContactEmail() {
 
-        await this.contactEmail.fill('Selim@test.com')
+        await this.contactEmail.fill('jack@test.com')
     }
 
     async writeReferenceID() {
 
-        await this.referenceID.fill('Ejy94Ko183bh5lo73')
+        await this.referenceID.fill('33FK60MCT15E4')
     }
     async writeDescription() {
 
@@ -48,15 +48,15 @@ exports.createHub = class createHub {
 
     async writeName() {
 
-        await this.Name.fill('Selim')
+        await this.Name.fill('jack')
     }
     async writecontactPhone() {
 
-        await this.contactPhone.fill('8143193555')
+        await this.contactPhone.fill('2052034512')
     }
     async writecontactName() {
 
-        await this.contactName.fill('Shady')
+        await this.contactName.fill('John')
     }
     async chooseState() {
 
@@ -65,12 +65,11 @@ exports.createHub = class createHub {
     }
     async writeLocationName() {
 
-        await this.locationName.fill('Costco')
+        await this.locationName.fill('Jack Browns Burger & Beer Joint')
     }
     async writeAddress() {
 
-        await this.Address.fill('6880 AL-5, Brent, AL 35034')
-
+        await this.Address.fill('2811 7th Ave S, Birmingham, AL 35233-2803')
     }
     async writeAddress2() {
 

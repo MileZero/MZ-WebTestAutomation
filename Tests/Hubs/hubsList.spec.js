@@ -5,13 +5,17 @@ require('dotenv').config();
 const email = process.env.Email;
 const password = process.env.Pass;
 
-test('driverprofile page', async ({ page }) => {
+test('Hubs List page', async ({ page }) => {
      await Login(page, email, password)
+    await page.goto('https://milevision-stage.milezero.com/mv/hubsConfig.jsp');
     const Filter = new FilterFeature(page);
     const word = 'A'
-    await page.goto('https://milevision-stage.milezero.com/mv/hubsConfig.jsp');
-    await Filter.sortColumns();
+    const search ="Arizona"
+    
     await Filter.searchColumns(word);
+    await Filter.sortColumns();
+    await Filter.generalSearchTab(search);
+    
     // await Filter.filterNameClick()
     // await Filter.filterStatusClick();
     // await Filter.filterWithWords('RDG')

@@ -31,8 +31,8 @@ test('create a new hub page', async ({page}) => {
 await page.waitForSelector('#pv_id_20_0_content > div > div.p-datatable-wrapper > table');
 
 // Search for the created driver in the data table
-const searchText = 'MADY';
-const searchResults = await page.$$eval('#pv_id_36_0_content > div > div.p-datatable-wrapper > table td', (cells, searchText) => {
+const searchText = 'Jack';
+const searchResults = await page.$$eval('xpath= //*[@id="app"]/div/div[2]/div[2]', (cells, searchText) => {
   const results = [];
   for (const cell of cells) {
     if (cell.textContent.includes(searchText)) {
