@@ -17,7 +17,7 @@ exports.createHub = class createHub {
         this.ZIP = page.getByLabel('Zip/Postal Code');
         this.Plus4 = page.getByPlaceholder('Plus');
         this.GIclass = page.getByPlaceholder('Gl Class');
-        this.State = page.locator('xpath =//*[@id="state"]').getByRole('combobox');
+        this.State = page.getByRole('combobox');
         this.deliveryDays = page.locator('div').filter({ hasText: /^MON$/ }).locator('div').nth(2)
         this.Latitude = page.getByLabel('Latitude');
         this.Longitude = page.getByLabel('Longitude');
@@ -34,12 +34,12 @@ exports.createHub = class createHub {
     }
     async writeContactEmail() {
 
-        await this.contactEmail.fill('yasser@test.com')
+        await this.contactEmail.fill('jack@test.com')
     }
 
     async writeReferenceID() {
 
-        await this.referenceID.fill('Ejy94Ko183bh5lo73')
+        await this.referenceID.fill('33FK60MCT15E4')
     }
     async writeDescription() {
 
@@ -48,15 +48,15 @@ exports.createHub = class createHub {
 
     async writeName() {
 
-        await this.Name.fill('Mady')
+        await this.Name.fill('jack')
     }
     async writecontactPhone() {
 
-        await this.contactPhone.fill('8143193555')
+        await this.contactPhone.fill('2052034512')
     }
     async writecontactName() {
 
-        await this.contactName.fill('fady')
+        await this.contactName.fill('John')
     }
     async chooseState() {
 
@@ -65,12 +65,11 @@ exports.createHub = class createHub {
     }
     async writeLocationName() {
 
-        await this.locationName.fill('Chick Fil-A')
+        await this.locationName.fill('Jack Browns Burger & Beer Joint')
     }
     async writeAddress() {
 
-        await this.Address.fill('6880 AL-5, Brent, AL 35034')
-
+        await this.Address.fill('2811 7th Ave S, Birmingham, AL 35233-2803')
     }
     async writeAddress2() {
 
@@ -93,20 +92,20 @@ exports.createHub = class createHub {
 
         await this.GIclass.fill('loak')
     }
-    async clickSave() {
+    async clickCreate() {
 
         await this.createButton.click();
     }
     async writeCity() {
 
-        await this.City.fill('Birmingham')
+        await this.City.fill('Birtish coloumbia')
     }
     async writeSMS() {
 
-        await this.SMS.fill(' HELLO ')
+        await this.SMS.fill(' test a hub ')
     }
     async chooseDeliveryDays() {
-        await this.deliveryDays.check();
+        await this.deliveryDays.click();
 
     }
 }
