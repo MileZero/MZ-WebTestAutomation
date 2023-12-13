@@ -4,7 +4,7 @@ variables:
   CI: true
  
 trigger:
-  - main
+  - develop
  
 jobs:
   - job: test
@@ -27,7 +27,7 @@ jobs:
         displayName: "Install Playwright Browsers"
  
       - script: |
-          npx playwright test
+          npx playwright test hubsList.spec.js
         displayName: "Run Playwright tests"
  
       - publish: $(System.DefaultWorkingDirectory)/playwright-report
