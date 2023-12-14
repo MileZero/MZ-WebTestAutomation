@@ -27,7 +27,7 @@ jobs:
         displayName: "Install Playwright Browsers"
  
       - script: |
-          npx playwright test hubsList.spec.js
+          npx playwright test $(System.DefaultWorkingDirectory)/Tests/Hubs/hubsList.spec.js
         displayName: "Run Playwright tests"
  
       - publish: $(System.DefaultWorkingDirectory)/playwright-report
