@@ -1,43 +1,38 @@
 name: Playwright Tests
- 
-variables:
-  CI: true
- 
+
 trigger:
-  - main
- 
-jobs:
-  - job: test
-    timeoutInMinutes: 60
-    pool:
-      vmImage: "ubuntu-latest"
- 
-    steps:
-      - task: NodeTool@0
-        inputs:
-          versionSpec: "21.3.0"
-        displayName: "Install Node.js"
- 
-      - script: |
-          npm ci
-        displayName: "Install dependencies"
- 
-      - script: |
-          npx playwright install --with-deps
-        displayName: "Install Playwright Browsers"
-        
-      - script: npm install -g playwright
- 
-      - script: |
-          cd Tests/Hubs
-          npx playwright test hubsList.spec.js --debug
-        displayName: "Run Playwright tests"
- 
-      - script: |
-          npx playwright test hubsList.spec.js --debug
-        displayName: "Run Playwright tests"
- 
-      - publish: $(System.DefaultWorkingDirectory)/playwright-report
-        artifact: playwright-report
-        # always create the artifact, this is useful for debugging failed tests
-        condition: always()
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '21.3.0'
+  displayName: 'Install Node.js'
+
+- script: npm ci
+  displayName: 'npm ci'
+- script: npx playwright install --with-deps
+  displayName: 'Install Playwright browsers'
+- script: npx playwright test
+  displayName: 'Run Playwright tests'
+  env:
+    CI: 'true'
+- task: PublishTestResults@2
+  displayName: 'Publish test results'
+  inputs:
+    searchFolder: 'test-results'
+    testResultsFormat: 'JUnit'
+    testResultsFiles: 'e2e-junit-results.xml'
+    mergeTestResults: true
+    failTaskOnFailedTests: true
+    testRunTitle: 'My End-To-End Tests'
+  condition: succeededOrFailed()
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: playwright-report
+    artifact: playwright-report
+    publishLocation: 'pipeline'
+  condition: succeededOrFailed()
