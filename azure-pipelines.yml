@@ -26,10 +26,12 @@ jobs:
           npx playwright install --with-deps
         displayName: "Install Playwright Browsers"
         
+      - script: npm install -g playwright
+ 
       - script: |
-          ls $(System.DefaultWorkingDirectory)
-          ls $(System.DefaultWorkingDirectory)/Tests/Hubs
-        displayName: "show contents"
+          cd Tests/Hubs
+          npx playwright test hubsList.spec.js --debug
+        displayName: "Run Playwright tests"
  
       - script: |
           npx playwright test hubsList.spec.js --debug
