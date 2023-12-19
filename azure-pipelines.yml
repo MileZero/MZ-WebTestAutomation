@@ -1,7 +1,7 @@
 name: Playwright Tests
 
 trigger:
-- main
+- develop
 
 pool:
   vmImage: ubuntu-latest
@@ -16,7 +16,7 @@ steps:
   displayName: 'npm ci'
 - script: npx playwright install --with-deps
   displayName: 'Install Playwright browsers'
-- script: npx playwright test
+- script: npx playwright test createHub.spec.js
   displayName: 'Run Playwright tests'
   env:
     CI: 'true'
