@@ -5,7 +5,6 @@ const { setTimeout } = require('timers/promises');
 async function login(page, email, password) {
   // Navigate to the website
   await page.goto('https://milevision-stage.milezero.com/mv/');
-  await page.getByRole('button', { name: 'AUTH0' }).click()
 
   // Fill in email and password and click login button
 
@@ -14,14 +13,14 @@ async function login(page, email, password) {
   await page.getByRole('button', { name: 'Log In' }).click();
 
   // Wait for navigation to complete and check if login was successful
-  await page.getByRole('button', { name: 'AUTH0' }).click()
+  await page.waitForNavigation();
 
-  // const title = await page.title();
-  // if (title === 'MileZero Analytics') {
-  //   console.log('Login successful');
-  // } else {
-  //   console.log('Login failed');
-  // }
+  const title = await page.title();
+  if (title === 'MileZero Analytics') {
+    console.log('Login successful');
+  } else {
+    console.log('Login failed');
+  }
 }
 
 module.exports = login;

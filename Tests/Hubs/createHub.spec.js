@@ -8,6 +8,7 @@ test('create a new hub page', async ({page}) => {
     await Login(page, email, password);
     const create = new createHub(page);
     await create.createNewHubPage();
+    await expect(page).toHaveURL('https://milevision-stage.milezero.com/mv/hubsConfig.jsp');
     await create.clickCreateAHubButton();
     await create.writeName();
     await create.writeReferenceID();
