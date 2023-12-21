@@ -16,7 +16,9 @@ steps:
   displayName: 'npm ci'
 - script: npx playwright install --with-deps
   displayName: 'Install Playwright browsers'
-- script: npx playwright test demo-todo-app.spec.js
+- script: $(System.DefaultWorkingDirectory)/MZ-PW-POC/tests-examples
+- script: 
+npx playwright test demo-todo-app.spec.js
   displayName: 'Run Playwright tests'
   env:
     CI: 'true'
