@@ -1,0 +1,40 @@
+<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="22.947153999999998">
+<testsuite name="Hubs\createHub.spec.js" timestamp="2023-12-19T18:32:17.756Z" hostname="chromium" tests="1" failures="1" skipped="0" time="16.597" errors="0">
+<testcase name="create a new hub page" classname="Hubs\createHub.spec.js" time="16.597">
+<failure message="createHub.spec.js:7:1 create a new hub page" type="FAILURE">
+<![CDATA[  [chromium] › Hubs\createHub.spec.js:7:1 › create a new hub page ──────────────────────────────────
+
+    Error: page.title: Execution context was destroyed, most likely because of a navigation
+
+       at LogintoMileView\logintoMileView.spec.js:18
+
+      16 |   await page.waitForNavigation();
+      17 |
+    > 18 |   const title = await page.title();
+         |                            ^
+      19 |   if (title === 'MileZero Analytics') {
+      20 |     console.log('Login successful');
+      21 |   } else {
+
+        at login (C:\Users\HP\MZ-PW-POC\tests\LogintoMileView\logintoMileView.spec.js:18:28)
+        at C:\Users\HP\MZ-PW-POC\tests\Hubs\createHub.spec.js:8:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    testOutputs\Hubs-createHub-create-a-new-hub-page-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    testOutputs\Hubs-createHub-create-a-new-hub-page-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\testOutputs\Hubs-createHub-create-a-new-hub-page-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|..\testOutputs\Hubs-createHub-create-a-new-hub-page-chromium\video.webm]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>
