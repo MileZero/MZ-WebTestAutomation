@@ -1,2 +1,3 @@
-# MZ-PW-POC
-Milevision testautomation using playwright JS.
+# MZ-WebTestAutomation
+
+Milevision testautomation for the web UI using playwright JS.
